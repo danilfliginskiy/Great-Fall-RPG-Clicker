@@ -39,6 +39,7 @@
      <Compile Include="Assets\Scripts\AddExperience.cs" />
      <Compile Include="Assets\Scripts\BuyDonate.cs" />
      <Compile Include="Assets\Scripts\ChangeData.cs" />
+     <Compile Include="Assets\Scripts\Death.cs" />
      <Compile Include="Assets\Scripts\DepressionButton.cs" />
      <Compile Include="Assets\Scripts\EatButton.cs" />
      <Compile Include="Assets\Scripts\HappinessButton.cs" />
@@ -51,6 +52,8 @@
      <Compile Include="Assets\Scripts\ShopOfEat.cs" />
      <Compile Include="Assets\Scripts\ShopOfHappiness.cs" />
      <Compile Include="Assets\Scripts\ShopOfWork.cs" />
+     <Compile Include="Assets\Scripts\Timer.cs" />
+     <Compile Include="Assets\Scripts\Warning.cs" />
      <Compile Include="Assets\Scripts\WorkButton.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.18f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
