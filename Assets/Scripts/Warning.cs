@@ -9,13 +9,13 @@ public class Warning : MonoBehaviour
 
     public GameObject WarningPanel;
     public Slider hungerBar;
-    int a=0;// переменная для скрытия warning панели 
+    int a = 0;// переменная для скрытия warning панели 
 
     // Start is called before the first frame update
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class Warning : MonoBehaviour
         if (hungerBar.value == 0f)
         {
             WarningPanel.SetActive(true);
-            
+
         }
         if (a == 1)
         {
