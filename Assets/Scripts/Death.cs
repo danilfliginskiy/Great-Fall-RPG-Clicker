@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Death : MonoBehaviour{
+public class Death : MonoBehaviour
+{
 
     public Text lvl;
     public Text levelProgress;
@@ -23,14 +24,14 @@ public class Death : MonoBehaviour{
     {
         progressBar.value = 0f;
         depressionBar.value = 0f;
-        healthBar.value = 1f;
-        hungerBar.value = 1f;
-        happinessBar.value = 1f;
+        healthBar.value = 100f;
+        hungerBar.value = 100f;
+        happinessBar.value = 100f;
         lvl.text = "0";
-        levelProgress.text =  "0/40 XP";
+        levelProgress.text = "0/40 XP";
         money.text = "0";
-        days.text = "ДНЕЙ: 0";
-        hours.text = "ЧАСОВ: 0";
+        days.text = "Дней: 0";
+        hours.text = "Часов: 0";
         DeathPanel.SetActive(false);
 
 

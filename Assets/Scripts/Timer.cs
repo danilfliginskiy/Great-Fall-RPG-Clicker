@@ -11,12 +11,12 @@ public class Timer : MonoBehaviour
     public GameObject DeathPanel;
 
     public float maTime = 3f;
-    float timeLeft=0;
+    float timeLeft = 0;
 
     bool timerRunning = false;
 
     void Start()
-    {    
+    {
         timeLeft = maTime;
     }
 
@@ -24,7 +24,7 @@ public class Timer : MonoBehaviour
     {
         if (timerRunning == true)
         {
-            if(hungerBar.value != 0f)
+            if (hungerBar.value != 0f)
             {
                 timerRunning = false;
             }
@@ -38,9 +38,9 @@ public class Timer : MonoBehaviour
                 timerRunning = false;
                 timeLeft = maTime;
             }
-               
+
         }
-        
+
     }
 
     public void ButtonTimer()
