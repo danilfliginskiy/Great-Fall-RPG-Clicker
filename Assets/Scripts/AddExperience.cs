@@ -8,9 +8,9 @@ public class AddExperience : MonoBehaviour
 {
 
     public int level = 1; //Уровень
-    public float[] addedProgress = new float[] { 0.1f, 0.05f, 0.05f, 0.05f, 0.03f, 0.03f, 0.03f, 0.02f, 0.02f, 0.01f }; //Добавляемый опыт
-    public int i = 0;
-    public int maxLevelProgress = 40;
+    public int[] amountOfProgress = new int[] { 20, 30, 40, 60, 80, 100, 120, 140, 150 }; //Добавляемый опыт
+    public int index = 0;
+    public int addedProgress = 1;
 
     public Slider progressBar;
     public Text lvl;
@@ -20,24 +20,23 @@ public class AddExperience : MonoBehaviour
     {
 
         //Заполнение шкалы опыта
-        progressBar.value += addedProgress[i];
-        levelProgress.text = Math.Round(progressBar.value * maxLevelProgress) + "/" + maxLevelProgress;
-        if (progressBar.value == 1f)
-        {
+        progressBar.value += addedProgress;
+        levelProgress.text = progressBar.value + "/" + progressBar.maxValue + " XP";
+        
+        if (progressBar.value == amountOfProgress[index]) {
+
             level++;
-            if (i < 9)
-            {
-                i++;
-            }
-            else
-            {
-                i = 9;
+
+            if (index < 9) {
+                index++;
+            } else {
+                index = 9;
             }
 
             lvl.text = level.ToString();
-            progressBar.value = 0f;
-            maxLevelProgress += 20;
-            levelProgress.text = (progressBar.value * 100) + "/" + maxLevelProgress + " XP";
+            progressBar.value = 0;
+            progressBar.maxValue = amountOfProgress[index];
+            levelProgress.text = progressBar.value + "/" + progressBar.maxValue + " XP";
 
         }
 
