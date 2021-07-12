@@ -27,7 +27,7 @@ public class SelectDepression : MonoBehaviour {
 
                 } else {
 
-                    textOfButtonsInShop[i].text = "Использовать";
+                    textOfButtonsInShop[i].text = "Выбрать";
                     buttonsInShop[i].interactable = true;
 
                 }

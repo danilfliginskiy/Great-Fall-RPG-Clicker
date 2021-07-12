@@ -7,7 +7,7 @@ public class EatButton : MonoBehaviour {
 
     public WorkButton linkOnWorkButton; //Ссылка на другой скрипт
 
-    public int foodPrice = 1; //Цена на еду
+    public int foodPrice = 0; //Цена на еду
     public int addedHealth = 10; //Добавляемое здоровье
     public int addedEat = 25; //Добавляемая еда
     public int takeAwayHappiness = -5; //Отнимаемое счастье

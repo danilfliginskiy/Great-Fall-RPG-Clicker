@@ -34,7 +34,7 @@ public class ShopOfDepression : MonoBehaviour {
 
             } else if (Convert.ToInt32(linkOnSelectDepression.usersLVL.text) >= neededLVLArray[i]) {
 
-                linkOnSelectDepression.textOfButtonsInShop[i].text = "Использовать";
+                linkOnSelectDepression.textOfButtonsInShop[i].text = "Выбрать";
                 linkOnSelectDepression.buttonsInShop[i].interactable = true;
 
             }
