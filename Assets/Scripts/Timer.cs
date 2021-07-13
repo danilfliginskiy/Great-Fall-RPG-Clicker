@@ -7,7 +7,11 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
 
+    public Slider healthBar;
     public Slider hungerBar;
+    public Slider happinessBar;
+    public Slider depressionBar;
+
     public GameObject DeathPanel;
 
     public float maTime = 3f;
@@ -22,12 +26,15 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
+
         if (timerRunning == true)
         {
-            if (hungerBar.value != 0f)
+
+            if (healthBar.value != 0f && hungerBar.value != 0f && happinessBar.value != 0f && depressionBar.value != 100f)
             {
                 timerRunning = false;
             }
+
             if (timeLeft > 0)
             {
                 timeLeft -= Time.deltaTime;
@@ -47,4 +54,5 @@ public class Timer : MonoBehaviour
     {
         timerRunning = true;
     }
+
 }

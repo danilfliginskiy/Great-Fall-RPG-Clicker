@@ -9,8 +9,17 @@ public class Death : MonoBehaviour
 
     //Ссылки на другие скрипты
     public WorkButton linkOnWorkButton;
+    public EatButton linkOnEatButton;
+    public HappinessButton linkOnHappinessButton;
+    public DepressionButton linkOnDepressionButton;
+    //------------------
     public ChangeData linkOnChangeData;
     public AddExperience linkOnAddExperience;
+    //------------------
+    public SelectProfession linkOnSelectProfession;
+    public SelectFood linkOnSelectFood;
+    public SelectHappiness linkOnSelectHappiness;
+    public SelectDepression linkOnSelectDepression;
 
     public Text lvl;
     public Text levelProgress;
@@ -18,9 +27,10 @@ public class Death : MonoBehaviour
     public Text hours;
     public Text money;
 
-    public Slider progressBar;
     public GameObject DeathPanel;
     public GameObject RefinementPanel;
+
+    public Slider progressBar;
 
     public Slider healthBar;
     public Slider hungerBar;
@@ -43,7 +53,7 @@ public class Death : MonoBehaviour
     public void AcceptButton() //Подтверждает выбор смерти
     {
 
-        //Обнуление прогресса при смерти
+        //Обнуление опыта
         progressBar.value = 0;
         lvl.text = "1";
         levelProgress.text = "0/20 XP";
@@ -52,28 +62,79 @@ public class Death : MonoBehaviour
         progressBar.maxValue = linkOnAddExperience.amountOfProgress[0];
         linkOnAddExperience.addedProgress = 1;
 
+        //Пополнение характеристик
         depressionBar.value = 0;
         healthBar.value = 100;
         hungerBar.value = 100;
         happinessBar.value = 100;
         money.text = "0";
         linkOnWorkButton.amountOfMoney = 0;
-        //Добавить присвоение первых элементов магазина
         
+        //Сброс магазина профессий
+        for (int i = 1; i < linkOnSelectProfession.buttonsInShop.Length; i++) {
+            linkOnSelectProfession.textOfButtonsInShop[i].text = "Недоступно";
+            linkOnSelectProfession.buttonsInShop[i].interactable = false;
+        }
+        linkOnSelectProfession.textOfButtonsInShop[0].text = "Выбрано";
+        linkOnSelectProfession.buttonsInShop[0].interactable = false;
+        linkOnWorkButton.moneyMultiplier = 1;
+        linkOnWorkButton.takeAwayHealth = -10;
+        linkOnWorkButton.takeAwayEat = -10;
+        linkOnWorkButton.takeAwayHappiness = -10;
+        linkOnWorkButton.addDepression = 10;
+
+        //Сброс магазина еды
+        for (int i = 1; i < linkOnSelectFood.buttonsInShop.Length; i++) {
+            linkOnSelectFood.textOfButtonsInShop[i].text = "Недоступно";
+            linkOnSelectFood.buttonsInShop[i].interactable = false;
+        }
+        linkOnSelectFood.textOfButtonsInShop[0].text = "Выбрано";
+        linkOnSelectFood.buttonsInShop[0].interactable = false;
+        linkOnEatButton.foodPrice = 0;
+        linkOnEatButton.addedHealth = 10;
+        linkOnEatButton.addedEat = 25;
+        linkOnEatButton.takeAwayHappiness = -5;
+
+        //Сброс магазина счастья
+        for (int i = 1; i < linkOnSelectHappiness.buttonsInShop.Length; i++) {
+            linkOnSelectHappiness.textOfButtonsInShop[i].text = "Недоступно";
+            linkOnSelectHappiness.buttonsInShop[i].interactable = false;
+        }
+        linkOnSelectHappiness.textOfButtonsInShop[0].text = "Выбрано";
+        linkOnSelectHappiness.buttonsInShop[0].interactable = false;
+        linkOnHappinessButton.holidayPrice = 0;
+        linkOnHappinessButton.addedHealth = 10;
+        linkOnHappinessButton.takeAwayEat = 2;
+        linkOnHappinessButton.addedHappiness = 10;
+
+        //Сброс магазина счастья
+        for (int i = 1; i < linkOnSelectHappiness.buttonsInShop.Length; i++) {
+            linkOnSelectHappiness.textOfButtonsInShop[i].text = "Недоступно";
+            linkOnSelectHappiness.buttonsInShop[i].interactable = false;
+        }
+        linkOnSelectHappiness.textOfButtonsInShop[0].text = "Выбрано";
+        linkOnSelectHappiness.buttonsInShop[0].interactable = false;
+        linkOnHappinessButton.holidayPrice = 0;
+        linkOnHappinessButton.addedHealth = 10;
+        linkOnHappinessButton.takeAwayEat = 2;
+        linkOnHappinessButton.addedHappiness = 10;
+
+        //Сброс магазина депрессии
+        for (int i = 1; i < linkOnSelectDepression.buttonsInShop.Length; i++) {
+            linkOnSelectDepression.textOfButtonsInShop[i].text = "Недоступно";
+            linkOnSelectDepression.buttonsInShop[i].interactable = false;
+        }
+        linkOnSelectDepression.textOfButtonsInShop[0].text = "Выбрать";
+        linkOnSelectDepression.buttonsInShop[0].interactable = false;
+        
+        //Обнуление времени
         days.text = "Дней: 0";
         hours.text = "Часов: 0";
         linkOnChangeData.amountOfDays = 0;
         linkOnChangeData.amountOfHours = 0;
 
-
         RefinementPanel.SetActive(false);
         DeathPanel.SetActive(false);
-
-        //Присвоение первых товаров в магазине
-
-    }
-    public void PayOffButton() //Запускает рекламу
-    {
 
     }
 }

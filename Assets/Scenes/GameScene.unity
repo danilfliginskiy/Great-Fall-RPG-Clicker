@@ -6942,7 +6942,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WarningPanel: {fileID: 897006084}
+  warningText: {fileID: 1598168969}
+  healthBar: {fileID: 324334857}
   hungerBar: {fileID: 2056911549}
+  happinessBar: {fileID: 1900049628}
+  depressionBar: {fileID: 2094568313}
 --- !u!114 &519420043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6955,7 +6959,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebeded07d16f30548aebafe348ee6c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 324334857}
   hungerBar: {fileID: 2056911549}
+  happinessBar: {fileID: 1900049628}
+  depressionBar: {fileID: 2094568313}
   DeathPanel: {fileID: 430055369}
   maTime: 3
 --- !u!114 &519420044
@@ -6971,16 +6978,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkOnWorkButton: {fileID: 519420034}
+  linkOnEatButton: {fileID: 519420035}
+  linkOnHappinessButton: {fileID: 519420033}
+  linkOnDepressionButton: {fileID: 1722582585}
   linkOnChangeData: {fileID: 519420030}
   linkOnAddExperience: {fileID: 519420037}
+  linkOnSelectProfession: {fileID: 968729084}
+  linkOnSelectFood: {fileID: 572544435}
+  linkOnSelectHappiness: {fileID: 675874729}
+  linkOnSelectDepression: {fileID: 1722582584}
   lvl: {fileID: 641901526}
   levelProgress: {fileID: 343892659}
   days: {fileID: 798514370}
   hours: {fileID: 642464466}
   money: {fileID: 338445963}
-  progressBar: {fileID: 475773135}
   DeathPanel: {fileID: 430055369}
   RefinementPanel: {fileID: 1971638045}
+  progressBar: {fileID: 475773135}
   healthBar: {fileID: 324334857}
   hungerBar: {fileID: 2056911549}
   happinessBar: {fileID: 1900049628}
