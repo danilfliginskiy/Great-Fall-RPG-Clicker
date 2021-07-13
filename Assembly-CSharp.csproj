@@ -39,6 +39,7 @@
      <Compile Include="Assets\Scripts\AddExperience.cs" />
      <Compile Include="Assets\Scripts\BuyDonate.cs" />
      <Compile Include="Assets\Scripts\ChangeData.cs" />
+     <Compile Include="Assets\Scripts\CloseRandomEvent.cs" />
      <Compile Include="Assets\Scripts\Death.cs" />
      <Compile Include="Assets\Scripts\DepressionButton.cs" />
      <Compile Include="Assets\Scripts\EatButton.cs" />

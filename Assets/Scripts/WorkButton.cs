@@ -1,9 +1,56 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class WorkButton : MonoBehaviour {
+
+    int chanceOfRandomEvent = 50; // 5% возникновения события
+    System.Random randomVariable = new System.Random();
+
+    //Массив случайных событий на работе
+    public string[,,] arrayOfRandomEvents = { //i
+
+        { //j Означает номер уровня
+            //k Означает событие и отнимаемые харакетристики
+            {"Побили хулиганы", "-20", "0", "-20", "+20"},
+            {"Посетила налоговая", "0", "-10", "-10", "+40"},
+            {"Задержала полиция", "0", "-10", "-20", "+30"},
+            {"Атаковали собаки", "-40", "-10", "-20", "0"},
+            {"Добряк пожелал хорошего дня", "0", "0", "+10", "-50"}
+        },
+
+        { //j
+            //k Означает событие и отнимаемые харакетристики
+            {"Бросили мусор под ноги", "-10", "-10", "-20", "+20"},
+            {"Поздоровались и пожелали счастья", "0", "0", "+10", "-50"},
+            {"Нашел деньги", "0", "0", "+10", "-50"},
+            {"Ветер разнес листья", "-10", "-10", "-20", "+20"},
+            {"Атаковали собаки", "-40", "-10", "-20", "0"}
+        },
+
+        { //j
+            //k Означает событие и отнимаемые харакетристики
+            {"Лошадь сбежала", "-10", "-20", "-20", "+20"},
+            {"Хозяин наругал", "0", "0", "-10", "+20"},
+            {"Дети разбросали сено", "-10", "-10", "-20", "+20"},
+            {"Хозяин дал премию", "0", "0", "+20", "-30"},
+            {"Бандиты прокрались в хлев", "-30", "-20", "-20", "+50"}
+        }
+
+    };
+
+    //Ссылки на элементы для случайных событий
+    public GameObject randomEventBG;
+    public Text randomEventText;
+    public Text userLevel;
+
+    public bool hittingInChance;
+
+    //Ссылки на другие скрипты
+    public SelectProfession linkOnSelectProfession;
+    public ShopOfWork linkOnShopOfWork;
 
     public bool checkingThePurchasedDoubleSalary = false; //Проверка покупки доната
     public bool checkingThePurchasedDoubleStrength = false; //Проверка покупки доната
@@ -25,6 +72,8 @@ public class WorkButton : MonoBehaviour {
     public Slider depressionBar;
 
     public void ButtonClick() {
+
+        hittingInChance = false;
 
         //Если донат куплен, то активировать улучшения
         if (checkingThePurchasedDoubleSalary == false) {
@@ -48,6 +97,53 @@ public class WorkButton : MonoBehaviour {
 
         //Прибавляем монеты в UI
         amountOfMoneyText.text = amountOfMoney.ToString();
+
+        int randomValue = randomVariable.Next(0, 100);
+
+        //Появление случайного события с нужным для профессии текстом
+        if (randomValue < chanceOfRandomEvent) {
+
+            hittingInChance = true;
+            
+            //Проходим массив случайных событий
+            for (int i = 1; i <= arrayOfRandomEvents.GetLength(0); i++) {
+
+                //Проходим массив кнопок в магазине
+                for (int m = 0; m < linkOnSelectProfession.buttonsInShop.Length; m++) {
+
+                    if (linkOnSelectProfession.textOfButtonsInShop[m].text == "Выбрано") {
+
+                        //Используем нужные случайные события
+                        for (int j = 1; j <= arrayOfRandomEvents.GetLength(1); j++) {
+
+                            for (int k = 1; k <= arrayOfRandomEvents.GetLength(2); k++) {
+
+                                int randomEvent = randomVariable.Next(0, 4);
+                                randomEventText.text = arrayOfRandomEvents[m, randomEvent, 0];
+                                healthBar.value += Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 1]);
+                                hungerBar.value += Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 2]);
+                                happinessBar.value += Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 3]);
+                                depressionBar.value += Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 4]);
+
+                                break;
+
+                            }
+
+                            break;
+
+                        }
+
+                    }
+
+                    break;
+
+                }
+
+            }
+
+            randomEventBG.SetActive(true);
+
+        }
 
     }
 
