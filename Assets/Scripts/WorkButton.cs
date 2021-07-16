@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class WorkButton : MonoBehaviour {
 
-    int chanceOfRandomEvent = 50; // 5% возникновения события
+    int chanceOfRandomEvent = 5; // 5% возникновения события
     System.Random randomVariable = new System.Random();
 
     //Массив случайных событий на работе
@@ -14,29 +14,29 @@ public class WorkButton : MonoBehaviour {
 
         { //j Означает номер уровня
             //k Означает событие и отнимаемые харакетристики
-            {"Побили хулиганы", "-20", "0", "-20", "+20"},
-            {"Посетила налоговая", "0", "-10", "-10", "+40"},
-            {"Задержала полиция", "0", "-10", "-20", "+30"},
-            {"Атаковали собаки", "-40", "-10", "-20", "0"},
-            {"Добряк пожелал хорошего дня", "0", "0", "+10", "-50"}
+            {"Побили хулиганы", "-", "20"},
+            {"Посетила налоговая", "-", "10"},
+            {"Задержала полиция", "-", "10"},
+            {"Атаковали собаки", "-", "30"},
+            {"Добряк пожелал хорошего дня", "+", "20"}
         },
 
         { //j
             //k Означает событие и отнимаемые харакетристики
-            {"Бросили мусор под ноги", "-10", "-10", "-20", "+20"},
-            {"Поздоровались и пожелали счастья", "0", "0", "+10", "-50"},
-            {"Нашел деньги", "0", "0", "+10", "-50"},
-            {"Ветер разнес листья", "-10", "-10", "-20", "+20"},
-            {"Атаковали собаки", "-40", "-10", "-20", "0"}
+            {"Бросили мусор под ноги", "-", "15"},
+            {"Поздоровались и пожелали счастья", "+", "30"},
+            {"Нашел деньги", "+", "40"},
+            {"Ветер разнес листья", "-", "15"},
+            {"Атаковали собаки", "-", "40"}
         },
 
         { //j
             //k Означает событие и отнимаемые харакетристики
-            {"Лошадь сбежала", "-10", "-20", "-20", "+20"},
-            {"Хозяин наругал", "0", "0", "-10", "+20"},
-            {"Дети разбросали сено", "-10", "-10", "-20", "+20"},
-            {"Хозяин дал премию", "0", "0", "+20", "-30"},
-            {"Бандиты прокрались в хлев", "-30", "-20", "-20", "+50"}
+            {"Лошадь сбежала", "-", "30"},
+            {"Хозяин наругал", "-", "40"},
+            {"Дети разбросали сено", "-", "30"},
+            {"Хозяин дал премию", "+", "50"},
+            {"Бандиты прокрались в хлев", "-", "50"}
         }
 
     };
@@ -45,6 +45,9 @@ public class WorkButton : MonoBehaviour {
     public GameObject randomEventBG;
     public Text randomEventText;
     public Text userLevel;
+    public Text health;
+    public Text eat;
+    public Text happy;
 
     public bool hittingInChance;
 
@@ -120,10 +123,28 @@ public class WorkButton : MonoBehaviour {
 
                                 int randomEvent = randomVariable.Next(0, 4);
                                 randomEventText.text = arrayOfRandomEvents[m, randomEvent, 0];
-                                healthBar.value += Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 1]);
-                                hungerBar.value += Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 2]);
-                                happinessBar.value += Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 3]);
-                                depressionBar.value += Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 4]);
+
+                                int randomHealth = randomVariable.Next(0, Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 2]));
+                                int randomEat = randomVariable.Next(0, Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 2]));
+                                int randomHappy = randomVariable.Next(0, Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 2]));
+
+                                if (arrayOfRandomEvents[m, randomEvent, 1] == "+") {
+
+                                    healthBar.value += randomHealth;
+                                    hungerBar.value += randomEat;
+                                    happinessBar.value += randomHappy;
+
+                                } else {
+
+                                    healthBar.value -= randomHealth;
+                                    hungerBar.value -= randomEat;
+                                    happinessBar.value -= randomHappy;
+
+                                }
+
+                                health.text = arrayOfRandomEvents[m, randomEvent, 1] + randomHealth.ToString();
+                                eat.text = arrayOfRandomEvents[m, randomEvent, 1] + randomEat.ToString();
+                                happy.text = arrayOfRandomEvents[m, randomEvent, 1] + randomHappy.ToString();
 
                                 break;
 
@@ -138,6 +159,8 @@ public class WorkButton : MonoBehaviour {
                     break;
 
                 }
+
+                break;
 
             }
 

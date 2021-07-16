@@ -13,27 +13,9 @@ public class CloseRandomEvent : MonoBehaviour {
 
         randomEventBG.SetActive(false);
 
-        if (linkOnWorkButton.healthBar.value == 0f)
+        if (linkOnWorkButton.healthBar.value == 0f || linkOnWorkButton.hungerBar.value == 0f || linkOnWorkButton.happinessBar.value == 0f || linkOnWorkButton.depressionBar.value == linkOnWorkButton.depressionBar.maxValue)
         {
-            linkOnWarning.warningText.text = "У вас не осталось жизней. У вас есть 5 секунд, чтобы восстановить здоровье";
-            linkOnWarning.WarningPanel.SetActive(true);
-        }
-
-        if (linkOnWorkButton.hungerBar.value == 0f)
-        {
-            linkOnWarning.warningText.text = "Вы слишком голодны. У вас есть 5 секунд, чтобы покушать";
-            linkOnWarning.WarningPanel.SetActive(true);
-        }
-
-        if (linkOnWorkButton.happinessBar.value == 0f)
-        {
-            linkOnWarning.warningText.text = "У вас совсем нет сил. У вас есть 5 секунд, чтобы отдохнуть";
-            linkOnWarning.WarningPanel.SetActive(true);
-        }
-
-        if (linkOnWorkButton.depressionBar.value == 100f)
-        {
-            linkOnWarning.warningText.text = "Вы переутомлены. У вас есть 5 секунд, чтобы развлечься";
+            linkOnWarning.warningText.text = "Вы на грани смерти. Проверьте свое состояние. У вас есть 5 секунд, чтобы устранить проблему";
             linkOnWarning.WarningPanel.SetActive(true);
         }
 
