@@ -13,8 +13,9 @@ public class Timer : MonoBehaviour
     public Slider depressionBar;
 
     public GameObject DeathPanel;
+    public Text timer;
 
-    public float maTime = 3f;
+    public float maTime = 5f;
     float timeLeft = 0;
 
     bool timerRunning = false;
@@ -33,17 +34,20 @@ public class Timer : MonoBehaviour
             if (healthBar.value != 0f && hungerBar.value != 0f && happinessBar.value != 0f && depressionBar.value != 100f)
             {
                 timerRunning = false;
+                timer.text = " ";
             }
 
             if (timeLeft > 0)
             {
                 timeLeft -= Time.deltaTime;
+                timer.text = Mathf.Round(timeLeft).ToString();
             }
             else
             {
                 DeathPanel.SetActive(true);
                 timerRunning = false;
                 timeLeft = maTime;
+                timer.text = " ";
             }
 
         }
