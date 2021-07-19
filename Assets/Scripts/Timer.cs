@@ -30,17 +30,19 @@ public class Timer : MonoBehaviour
 
         if (timerRunning == true)
         {
+            timer.text = Mathf.Round(timeLeft).ToString();
 
             if (healthBar.value != 0f && hungerBar.value != 0f && happinessBar.value != 0f && depressionBar.value != 100f)
             {
                 timerRunning = false;
+                timeLeft = maTime;
                 timer.text = " ";
             }
 
             if (timeLeft > 0)
             {
                 timeLeft -= Time.deltaTime;
-                timer.text = Mathf.Round(timeLeft).ToString();
+                
             }
             else
             {
