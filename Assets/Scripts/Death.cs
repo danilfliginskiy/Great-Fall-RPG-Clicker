@@ -20,6 +20,8 @@ public class Death : MonoBehaviour
     public SelectFood linkOnSelectFood;
     public SelectHappiness linkOnSelectHappiness;
     public SelectDepression linkOnSelectDepression;
+    //------------------
+    public Energy linkOnEnergy;
 
     public Text lvl;
     public Text levelProgress;
@@ -138,6 +140,10 @@ public class Death : MonoBehaviour
         hours.text = "Часов: 0";
         linkOnChangeData.amountOfDays = 0;
         linkOnChangeData.amountOfHours = 0;
+
+        //Восполнение энергии
+        linkOnEnergy.energy = 300;
+        linkOnEnergy.energyText.text = linkOnEnergy.energy.ToString() + "/300";
 
         RefinementPanel.SetActive(false);
         DeathPanel.SetActive(false);

@@ -7575,6 +7575,7 @@ MonoBehaviour:
   linkOnSelectFood: {fileID: 572544435}
   linkOnSelectHappiness: {fileID: 675874729}
   linkOnSelectDepression: {fileID: 1722582584}
+  linkOnEnergy: {fileID: 519420046}
   lvl: {fileID: 641901526}
   levelProgress: {fileID: 343892659}
   days: {fileID: 798514370}
