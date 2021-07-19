@@ -7329,7 +7329,6 @@ MonoBehaviour:
   happy: {fileID: 1120941019}
   hittingInChance: 0
   linkOnSelectProfession: {fileID: 968729084}
-  linkOnShopOfWork: {fileID: 519420036}
   checkingThePurchasedDoubleSalary: 0
   checkingThePurchasedDoubleStrength: 0
   amountOfMoney: 0
@@ -7355,8 +7354,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076068dd10dd0ac4d933d61899a16bb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkOnSelectProfession: {fileID: 0}
-  linkOnShopOfWork: {fileID: 0}
+  randomEventBG: {fileID: 848322309}
+  randomEventText: {fileID: 2092340224}
+  userLevel: {fileID: 641901526}
+  hittingInChance: 0
+  linkOnSelectFood: {fileID: 572544435}
   linkOnWorkButton: {fileID: 519420034}
   foodPrice: 0
   addedHealth: 10

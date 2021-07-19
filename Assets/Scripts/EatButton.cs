@@ -1,55 +1,55 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EatButton : MonoBehaviour {
 
-    // int chanceOfRandomEvent = 5; // 5% возникновения события
-    // System.Random randomVariable = new System.Random();
+    int chanceOfRandomEvent = 50; // 5% возникновения события
+    System.Random randomVariable = new System.Random();
 
-    // //Массив случайных событий на работе
-    // public string[,,] arrayOfRandomEvents = { //i
+    //Массив случайных событий на работе
+    public string[,,] arrayOfRandomEvents = { //i
 
-    //     { //j Означает номер уровня
-    //         //k Означает событие и отнимаемые харакетристики
-    //         {"Еда оказалась просрочена", "-20", "-20", "-10", "0"},
-    //         {"Собаки отобрали еду", "0", "-10", "-10", "+40"},
-    //         {"Прохожий дал еды", "0", "-10", "-20", "-30"},
-    //         {"Печенье на дороге было только из печи", "-40", "-10", "-20", "-10"},
-    //         {"Кто-то забыл еду на лавочке", "0", "0", "+10", "-10"}
-    //     },
+        { //j Означает номер уровня
+            //k Означает событие и отнимаемые харакетристики
+            {"Еда оказалась просрочена", "-", "20"},
+            {"Собаки отобрали еду", "-", "30"},
+            {"Прохожий дал еды", "+", "20"},
+            {"Печенье на дороге было только из печи", "+", "20"},
+            {"Кто-то забыл еду на лавочке", "+", "20"}
+        },
 
-    //     { //j
-    //         //k Означает событие и отнимаемые харакетристики
-    //         {"Паек оказался просроченным", "-10", "-10", "-20", "+20"},
-    //         {"Хлеб в пайке был черствый", "0", "0", "+10", "-50"},
-    //         {"Кто-то стянул твою еду с лавочки", "0", "0", "+10", "-50"},
-    //         {"Кто-то случайно положил две порции в паек", "-10", "-10", "-20", "+20"},
-    //         {"Увидеть яблоко в обеде было очень приятно", "-40", "-10", "-20", "0"}
-    //     },
+        { //j
+            //k Означает событие и отнимаемые харакетристики
+            {"Паек оказался просроченным", "-", "25"},
+            {"Хлеб в пайке был черствый", "-", "15"},
+            {"Кто-то стянул твою еду с лавочки", "-", "30"},
+            {"Кто-то случайно положил две порции в паек", "+", "40"},
+            {"Увидеть яблоко в обеде было очень приятно", "+", "40"}
+        },
 
-    //     { //j
-    //         //k Означает событие и отнимаемые харакетристики
-    //         {"Барин опять дал несвежую еду", "-10", "-20", "-20", "+20"},
-    //         {"Лишили обеда за провинность", "0", "0", "-10", "+20"},
-    //         {"Лошадь украла овощи и фрукты с обеда", "-10", "-10", "-20", "+20"},
-    //         {"Хозяин угостил вином", "0", "0", "+20", "-30"},
-    //         {"Угостили пирогом", "-30", "-20", "-20", "+50"}
-    //     }
+        { //j
+            //k Означает событие и отнимаемые харакетристики
+            {"Барин опять дал несвежую еду", "-", "30"},
+            {"Лишили обеда за провинность", "-", "40"},
+            {"Лошадь украла овощи и фрукты с обеда", "-", "20"},
+            {"Хозяин угостил вином", "+", "30"},
+            {"Угостили пирогом", "+", "30"}
+        }
 
-    // };
+    };
 
-    // //Ссылки на элементы для случайных событий
-    // public GameObject randomEventBG;
-    // public Text randomEventText;
-    // public Text userLevel;
+    //Ссылки на элементы для случайных событий
+    public GameObject randomEventBG;
+    public Text randomEventText;
+    public Text userLevel;
 
-    // public bool hittingInChance;
+    public bool hittingInChance;
 
     //Ссылки на другие скрипты
-    public SelectProfession linkOnSelectProfession;
-    public ShopOfWork linkOnShopOfWork;
+    public SelectFood linkOnSelectFood;
 
     public WorkButton linkOnWorkButton; //Ссылка на другой скрипт
 
@@ -65,7 +65,7 @@ public class EatButton : MonoBehaviour {
 
     public void ButtonClick() {
 
-        //hittingInChance = false;
+        hittingInChance = false;
 
         //Отнимаем деньги за еду
         linkOnWorkButton.amountOfMoney -= foodPrice;
@@ -84,52 +84,72 @@ public class EatButton : MonoBehaviour {
         //Изменяем моенты в UI
         linkOnWorkButton.amountOfMoneyText.text = linkOnWorkButton.amountOfMoney.ToString();
 
-    //     int randomValue = randomVariable.Next(0, 100);
+        int randomValue = randomVariable.Next(0, 100);
 
-    //     //Появление случайного события с нужным для профессии текстом
-    //     if (randomValue < chanceOfRandomEvent) {
+        //Появление случайного события с нужным для профессии текстом
+        if (randomValue < chanceOfRandomEvent) {
 
-    //         hittingInChance = true;
+            hittingInChance = true;
             
-    //         //Проходим массив случайных событий
-    //         for (int i = 1; i <= arrayOfRandomEvents.GetLength(0); i++) {
+            //Проходим массив случайных событий
+            for (int i = 1; i <= arrayOfRandomEvents.GetLength(0); i++) {
 
-    //             //Проходим массив кнопок в магазине
-    //             for (int m = 0; m < linkOnSelectProfession.buttonsInShop.Length; m++) {
+                //Проходим массив кнопок в магазине
+                for (int m = 0; m < linkOnSelectFood.buttonsInShop.Length; m++) {
 
-    //                 if (linkOnSelectProfession.textOfButtonsInShop[m].text == "Выбрано") {
+                    if (linkOnSelectFood.textOfButtonsInShop[m].text == "Выбрано") {
 
-    //                     //Используем нужные случайные события
-    //                     for (int j = 1; j <= arrayOfRandomEvents.GetLength(1); j++) {
+                        //Используем нужные случайные события
+                        for (int j = 1; j <= arrayOfRandomEvents.GetLength(1); j++) {
 
-    //                         for (int k = 1; k <= arrayOfRandomEvents.GetLength(2); k++) {
+                            for (int k = 1; k <= arrayOfRandomEvents.GetLength(2); k++) {
 
-    //                             int randomEvent = randomVariable.Next(0, 4);
-    //                             randomEventText.text = arrayOfRandomEvents[m, randomEvent, 0];
-    //                             healthBar.value += Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 1]);
-    //                             hungerBar.value += Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 2]);
-    //                             happinessBar.value += Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 3]);
-    //                             depressionBar.value += Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 4]);
+                                int randomEvent = randomVariable.Next(0, 4);
+                                randomEventText.text = arrayOfRandomEvents[m, randomEvent, 0];
 
-    //                             break;
+                                int randomHealth = randomVariable.Next(0, Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 2]));
+                                int randomEat = randomVariable.Next(0, Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 2]));
+                                int randomHappy = randomVariable.Next(0, Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 2]));
 
-    //                         }
+                                if (arrayOfRandomEvents[m, randomEvent, 1] == "+") {
 
-    //                         break;
+                                    healthBar.value += randomHealth;
+                                    hungerBar.value += randomEat;
+                                    happinessBar.value += randomHappy;
 
-    //                     }
+                                } else {
 
-    //                 }
+                                    healthBar.value -= randomHealth;
+                                    hungerBar.value -= randomEat;
+                                    happinessBar.value -= randomHappy;
 
-    //                 break;
+                                }
 
-    //             }
+                                linkOnWorkButton.health.text = arrayOfRandomEvents[m, randomEvent, 1] + randomHealth.ToString();
+                                linkOnWorkButton.eat.text = arrayOfRandomEvents[m, randomEvent, 1] + randomEat.ToString();
+                                linkOnWorkButton.happy.text = arrayOfRandomEvents[m, randomEvent, 1] + randomHappy.ToString();
 
-    //         }
+                                break;
 
-    //         randomEventBG.SetActive(true);
+                            }
 
-    //     }
+                            break;
+
+                        }
+
+                    }
+
+                    break;
+
+                }
+
+                break;
+
+            }
+
+            randomEventBG.SetActive(true);
+
+        }
 
     }
 

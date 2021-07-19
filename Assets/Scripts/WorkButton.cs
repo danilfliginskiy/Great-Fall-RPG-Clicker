@@ -53,7 +53,6 @@ public class WorkButton : MonoBehaviour {
 
     //Ссылки на другие скрипты
     public SelectProfession linkOnSelectProfession;
-    public ShopOfWork linkOnShopOfWork;
 
     public bool checkingThePurchasedDoubleSalary = false; //Проверка покупки доната
     public bool checkingThePurchasedDoubleStrength = false; //Проверка покупки доната
