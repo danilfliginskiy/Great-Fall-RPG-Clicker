@@ -7301,6 +7301,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dddaeb38b3a154a459029cdf357265fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomEventBG: {fileID: 848322309}
+  randomEventText: {fileID: 2092340224}
+  userLevel: {fileID: 641901526}
+  hittingInChance: 0
+  linkOnSelectHappiness: {fileID: 675874729}
+  linkOnShopOfHappiness: {fileID: 519420039}
   linkOnWorkButton: {fileID: 519420034}
   holidayPrice: 0
   addedHealth: 10
@@ -7329,6 +7335,7 @@ MonoBehaviour:
   happy: {fileID: 1120941019}
   hittingInChance: 0
   linkOnSelectProfession: {fileID: 968729084}
+  linkOnShopOfWork: {fileID: 519420036}
   checkingThePurchasedDoubleSalary: 0
   checkingThePurchasedDoubleStrength: 0
   amountOfMoney: 0
@@ -7359,6 +7366,7 @@ MonoBehaviour:
   userLevel: {fileID: 641901526}
   hittingInChance: 0
   linkOnSelectFood: {fileID: 572544435}
+  linkOnShopOfEat: {fileID: 519420038}
   linkOnWorkButton: {fileID: 519420034}
   foodPrice: 0
   addedHealth: 10
@@ -10536,6 +10544,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e78bae2b333e1a4ba4b5d37056797b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomEventBG: {fileID: 848322309}
+  randomEventText: {fileID: 2092340224}
+  userLevel: {fileID: 641901526}
+  hittingInChance: 0
+  linkOnShopOfDepression: {fileID: 519420040}
+  linkOnWorkButton: {fileID: 519420034}
+  healthBar: {fileID: 324334857}
+  hungerBar: {fileID: 2056911549}
+  happinessBar: {fileID: 1900049628}
   buttonsInShop:
   - {fileID: 949366506}
   - {fileID: 1885183024}
@@ -17255,7 +17272,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -687, y: -58.99994}
+  m_AnchoredPosition: {x: -687, y: -58.999878}
   m_SizeDelta: {x: -149.33344, y: -797.002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1184017048
@@ -23403,6 +23420,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e78bae2b333e1a4ba4b5d37056797b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomEventBG: {fileID: 848322309}
+  randomEventText: {fileID: 2092340224}
+  userLevel: {fileID: 641901526}
+  hittingInChance: 0
+  linkOnShopOfDepression: {fileID: 519420040}
+  linkOnWorkButton: {fileID: 519420034}
+  healthBar: {fileID: 324334857}
+  hungerBar: {fileID: 2056911549}
+  happinessBar: {fileID: 1900049628}
   buttonsInShop:
   - {fileID: 949366506}
   - {fileID: 1885183024}
@@ -27263,7 +27289,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -687, y: -31.999939}
+  m_AnchoredPosition: {x: -687, y: -31.999878}
   m_SizeDelta: {x: -72.120056, y: -515.7363}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1971638049

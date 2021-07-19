@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class WorkButton : MonoBehaviour {
 
-    int chanceOfRandomEvent = 5; // 5% возникновения события
+    int chanceOfRandomEvent = 15; // 15% возникновения события
     System.Random randomVariable = new System.Random();
 
     //Массив случайных событий на работе
@@ -53,6 +53,7 @@ public class WorkButton : MonoBehaviour {
 
     //Ссылки на другие скрипты
     public SelectProfession linkOnSelectProfession;
+    public ShopOfWork linkOnShopOfWork;
 
     public bool checkingThePurchasedDoubleSalary = false; //Проверка покупки доната
     public bool checkingThePurchasedDoubleStrength = false; //Проверка покупки доната
@@ -106,6 +107,7 @@ public class WorkButton : MonoBehaviour {
         if (randomValue < chanceOfRandomEvent) {
 
             hittingInChance = true;
+            int differenceInLevels;
             
             //Проходим массив случайных событий
             for (int i = 1; i <= arrayOfRandomEvents.GetLength(0); i++) {
@@ -115,17 +117,21 @@ public class WorkButton : MonoBehaviour {
 
                     if (linkOnSelectProfession.textOfButtonsInShop[m].text == "Выбрано") {
 
+                        Debug.Log("Vibrano");
+
                         //Используем нужные случайные события
                         for (int j = 1; j <= arrayOfRandomEvents.GetLength(1); j++) {
 
                             for (int k = 1; k <= arrayOfRandomEvents.GetLength(2); k++) {
 
+                                differenceInLevels = Convert.ToInt32(userLevel.text) - linkOnShopOfWork.neededLVLArray[m] + 1;
+
                                 int randomEvent = randomVariable.Next(0, 4);
                                 randomEventText.text = arrayOfRandomEvents[m, randomEvent, 0];
 
-                                int randomHealth = randomVariable.Next(0, Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 2]));
-                                int randomEat = randomVariable.Next(0, Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 2]));
-                                int randomHappy = randomVariable.Next(0, Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 2]));
+                                int randomHealth = randomVariable.Next(0, Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 2])) * differenceInLevels;
+                                int randomEat = randomVariable.Next(0, Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 2])) * differenceInLevels;
+                                int randomHappy = randomVariable.Next(0, Convert.ToInt32(arrayOfRandomEvents[m, randomEvent, 2])) * differenceInLevels;
 
                                 if (arrayOfRandomEvents[m, randomEvent, 1] == "+") {
 
@@ -153,9 +159,9 @@ public class WorkButton : MonoBehaviour {
 
                         }
 
-                    }
+                        break;
 
-                    break;
+                    }
 
                 }
 

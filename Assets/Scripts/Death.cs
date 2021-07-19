@@ -67,6 +67,12 @@ public class Death : MonoBehaviour
         healthBar.value = 100;
         hungerBar.value = 100;
         happinessBar.value = 100;
+        //---
+        healthBar.maxValue = 100;
+        hungerBar.maxValue = 100;
+        happinessBar.maxValue = 100;
+        depressionBar.maxValue = 100;
+        //---
         money.text = "0";
         linkOnWorkButton.amountOfMoney = 0;
         
