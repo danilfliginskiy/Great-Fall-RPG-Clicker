@@ -117,8 +117,6 @@ public class WorkButton : MonoBehaviour {
 
                     if (linkOnSelectProfession.textOfButtonsInShop[m].text == "Выбрано") {
 
-                        Debug.Log("Vibrano");
-
                         //Используем нужные случайные события
                         for (int j = 1; j <= arrayOfRandomEvents.GetLength(1); j++) {
 
