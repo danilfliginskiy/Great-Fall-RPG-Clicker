@@ -12,12 +12,14 @@ public class Warning : MonoBehaviour
     public GameObject WarningPanel;
     public Text warningText;
 
+    public GameObject DepressionPanel;
+
     public Slider healthBar;
     public Slider hungerBar;
     public Slider happinessBar;
     public Slider depressionBar;
 
-    int a = 0;// переменная для скрытия warning панели 
+    int a = 0;// переменная для скрытия warning панели
 
     void Update()
     {

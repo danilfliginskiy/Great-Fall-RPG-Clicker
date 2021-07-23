@@ -53,6 +53,8 @@ public class SelectDepression : MonoBehaviour {
     public Text neededLVL; //Нужный для улучшения уровень
     public Text usersLVL; //Уровень игрока
 
+    public GameObject DepressionPanel;
+
     public void ButtonClick() {
 
         hittingInChance = false;
@@ -112,6 +114,9 @@ public class SelectDepression : MonoBehaviour {
                                 happinessBar.value -= randomHappy;
 
                             }
+
+                            DepressionPanel.SetActive(false);
+                            linkOnShopOfDepression.CheckButtonOfDepressionPanel = true;
 
                             linkOnWorkButton.health.text = arrayOfRandomEvents[indexOfButton, randomEvent, 1] + randomHealth.ToString();
                             linkOnWorkButton.eat.text = arrayOfRandomEvents[indexOfButton, randomEvent, 1] + randomEat.ToString();

@@ -13,6 +13,12 @@ public class Death : MonoBehaviour
     public HappinessButton linkOnHappinessButton;
     public DepressionButton linkOnDepressionButton;
     //------------------
+    public ShopOfWork linkOnShopOfWork;
+    public ShopOfEat linkOnShopOfEat;
+    public ShopOfHappiness linkOnShopOfHappiness;
+    public ShopOfDonate linkOnShopOfDonate;
+    public ShopOfDepression linkOnShopOfDepression;
+    //------------------
     public ChangeData linkOnChangeData;
     public AddExperience linkOnAddExperience;
     //------------------
@@ -32,6 +38,12 @@ public class Death : MonoBehaviour
     public GameObject DeathPanel;
     public GameObject RefinementPanel;
 
+    public GameObject WorkPanel;
+    public GameObject EatPanel;
+    public GameObject HappinessPanel;
+    public GameObject DepressionPanel;
+    public GameObject DonatePanel;
+
     public Slider progressBar;
 
     public Slider healthBar;
@@ -43,6 +55,16 @@ public class Death : MonoBehaviour
     {
         DeathPanel.SetActive(false);
         RefinementPanel.SetActive(true);
+        WorkPanel.SetActive(false);
+        linkOnShopOfWork.CheckButtonOfWorkPanel = true;
+        EatPanel.SetActive(false);
+        linkOnShopOfEat.CheckButtonOfEatPanel = true;
+        HappinessPanel.SetActive(false);
+        linkOnShopOfHappiness.CheckButtonOfHappinessPanel = true;
+        DepressionPanel.SetActive(false);
+        linkOnShopOfDepression.CheckButtonOfDepressionPanel = true;
+        DonatePanel.SetActive(false);
+        linkOnShopOfDonate.CheckButtonOfDonatePanel = true;
     }
 
     public void NoButton() //Возвращает к панели смерти
@@ -145,6 +167,7 @@ public class Death : MonoBehaviour
         linkOnEnergy.energy = 300;
         linkOnEnergy.energyText.text = linkOnEnergy.energy.ToString() + "/300";
 
+        //Отключение магазинов
         RefinementPanel.SetActive(false);
         DeathPanel.SetActive(false);
 
