@@ -8,6 +8,7 @@ public class CloseRandomEvent : MonoBehaviour {
     public WorkButton linkOnWorkButton;
 
     public GameObject randomEventBG;
+    public GameObject randomAdvertisingEventBG;
 
     public void ButtonClick() {
 
@@ -18,6 +19,8 @@ public class CloseRandomEvent : MonoBehaviour {
             linkOnWarning.warningText.text = "Вы на грани смерти. Проверьте свое состояние. У вас есть 5 секунд, чтобы устранить проблему";
             linkOnWarning.WarningPanel.SetActive(true);
         }
+
+        randomAdvertisingEventBG.SetActive(false);
 
     }
 
