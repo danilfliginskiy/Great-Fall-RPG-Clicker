@@ -9,9 +9,6 @@ public class WorkButton : MonoBehaviour {
     int chanceOfRandomEvent = 15; // 15% возникновения события
     System.Random randomVariable = new System.Random();
 
-    int chanceOfRandomAdvertisingEvent = 10; // 10% возникновения события
-    System.Random randomAdvertisingVariable = new System.Random();
-
     //Массив случайных событий на работе
     public string[,,] arrayOfRandomEvents = { //i
 
@@ -44,41 +41,6 @@ public class WorkButton : MonoBehaviour {
 
     };
 
-
-
-    //Массив случайных рекламных событий на работе
-    public string[,,] arrayOfRandomAdvertisingEvents = { //i
-
-        { //j Означает номер уровня
-            //k Означает событие и отнимаемые харакетристики
-            {"Человек в шлеме с рогами подкинул септим; Взять его?", "+", "20"},
-            {"Вы нашли чей-то кошель; Подобрать?", "+", "10"},
-            {"Бард спел песню о попрошайке; Сказать, что это песня про вас?", "+", "10"},
-            {"Умер родственник и оставил часть наследства; Получить его?", "+", "30"},
-            {"Вы бродили по кладбищу, наткнулись на открытый склеп; Забрать сокровища?", "+", "20"}
-        },
-
-        { //j
-            //k Означает событие и отнимаемые харакетристики
-            {"Вы нашли немного монет в мусоре; Забрать?", "+", "15"},
-            {"Вас пригласили подмести двор за дополнительную плату; Согласиться?", "+", "30"},
-            {"Женщина в странной шляпе попросила продать ей метлу; Согласиться?", "+", "40"},
-            {"На ваших глазах произошло убийство, преступники попросили замести следы; Помочь им?", "+", "15"},
-            {"Вас прегласили на премию 'Дворник недели'; Пойти?", "+", "40"}
-        },
-
-        { //j
-            //k Означает событие и отнимаемые харакетристики
-            {"Вы нашли лошадиную подкову; Продать ее?", "+", "30"},
-            {"Дама попросила подковать ее коня за вознаграждение; Помочь?", "+", "40"},
-            {"Вы убирали за богатырским конем и обнаружили золото; Взять?", "+", "30"},
-            {"Великий угонщик коней предложил помочь ему; Согласиться?", "+", "50"},
-            {"Барин спросил, подходить ли имя 'Плотва' для его лошади?", "+", "50"}
-        }
-
-    };
-
-
     //Ссылки на элементы для случайных событий
     public GameObject randomEventBG;
     public Text randomEventText;
@@ -86,12 +48,6 @@ public class WorkButton : MonoBehaviour {
     public Text health;
     public Text eat;
     public Text happy;
-
-    public GameObject randomAdvertisingEventBG;
-    public Text randomAdvertisingEventText;
-    public Text health_1;
-    public Text eat_1;
-    public Text happy_1;
 
     public bool hittingInChance;
 
@@ -161,6 +117,8 @@ public class WorkButton : MonoBehaviour {
 
                     if (linkOnSelectProfession.textOfButtonsInShop[m].text == "Выбрано") {
 
+                        Debug.Log("Vibrano");
+
                         //Используем нужные случайные события
                         for (int j = 1; j <= arrayOfRandomEvents.GetLength(1); j++) {
 
@@ -212,81 +170,6 @@ public class WorkButton : MonoBehaviour {
             }
 
             randomEventBG.SetActive(true);
-
-        }
-
-
-
-        int randomAdvertisingValue = randomVariable.Next(0, 100);
-
-        //Появление случайного события с нужным для профессии текстом
-        if (randomAdvertisingValue < chanceOfRandomAdvertisingEvent)
-        {
-
-            hittingInChance = true;
-            int differenceInLevels;
-
-            //Проходим массив случайных событий
-            for (int i = 1; i <= arrayOfRandomAdvertisingEvents.GetLength(0); i++)
-            {
-
-                //Проходим массив кнопок в магазине
-                for (int m = 0; m < linkOnSelectProfession.buttonsInShop.Length; m++)
-                {
-
-                    if (linkOnSelectProfession.textOfButtonsInShop[m].text == "Выбрано")
-                    {
-
-                        Debug.Log("Vibrano");
-
-                        //Используем нужные случайные события
-                        for (int j = 1; j <= arrayOfRandomAdvertisingEvents.GetLength(1); j++)
-                        {
-
-                            for (int k = 1; k <= arrayOfRandomAdvertisingEvents.GetLength(2); k++)
-                            {
-
-                                differenceInLevels = Convert.ToInt32(userLevel.text) - linkOnShopOfWork.neededLVLArray[m] + 1;
-
-                                int randomAdvertisingEvent = randomVariable.Next(0, 4);
-                                randomAdvertisingEventText.text = arrayOfRandomAdvertisingEvents[m, randomAdvertisingEvent, 0];
-
-                                int randomHealth = randomVariable.Next(0, Convert.ToInt32(arrayOfRandomAdvertisingEvents[m, randomAdvertisingEvent, 2])) * differenceInLevels;
-                                int randomEat = randomVariable.Next(0, Convert.ToInt32(arrayOfRandomAdvertisingEvents[m, randomAdvertisingEvent, 2])) * differenceInLevels;
-                                int randomHappy = randomVariable.Next(0, Convert.ToInt32(arrayOfRandomAdvertisingEvents[m, randomAdvertisingEvent, 2])) * differenceInLevels;
-
-                                if (arrayOfRandomAdvertisingEvents[m, randomAdvertisingEvent, 1] == "+")
-                                {
-
-                                    healthBar.value += randomHealth;
-                                    hungerBar.value += randomEat;
-                                    happinessBar.value += randomHappy;
-
-                                }
-
-                                health_1.text = arrayOfRandomAdvertisingEvents[m, randomAdvertisingEvent, 1] + randomHealth.ToString();
-                                eat_1.text = arrayOfRandomAdvertisingEvents[m, randomAdvertisingEvent, 1] + randomEat.ToString();
-                                happy_1.text = arrayOfRandomAdvertisingEvents[m, randomAdvertisingEvent, 1] + randomHappy.ToString();
-
-                                break;
-
-                            }
-
-                            break;
-
-                        }
-
-                        break;
-
-                    }
-
-                }
-
-                break;
-
-            }
-
-            randomAdvertisingEventBG.SetActive(true);
 
         }
 
